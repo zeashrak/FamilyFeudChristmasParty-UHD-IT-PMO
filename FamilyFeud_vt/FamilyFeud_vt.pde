@@ -3,6 +3,7 @@
 //int numPoints = 10;
 //int currentPoint;
 //PVector current;
+String question = "";
 String answer = "";
 //Global Variables
 int size = 0;
