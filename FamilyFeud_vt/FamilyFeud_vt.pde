@@ -1,4 +1,4 @@
-//Family Feud [] //<>// //<>//
+//Family Feud [] //<>// //<>// //<>// //<>//
 //NEW: Added SFX
 import processing.sound.*;
 SoundFile sfx0; //0 music? 1 on board 2 strike
@@ -66,7 +66,7 @@ void setup() {
   sfx1 = new SoundFile (this, "sounds/blip.mp3");
   sfx2 = new SoundFile (this, "sounds/buzzer.mp3");
   font = loadFont("BritannicBold.vlw");
-  textFont(font,48);
+  textFont(font, 48);
   //set images
   boardImg = loadImage("img/board.png");
   boardImg.resize(720, 640);
@@ -122,14 +122,7 @@ void loadBoard()
   int posX, posY;
   posX = width/4;
   posY = height/4;
-  switch(round)
-  {
-  case 1: 
-    items = 6;
-    break;
-  default:
-    break;
-  }
+  getRound();
   //draw background board
   //orange
   fill(238, 132, 78);
@@ -166,10 +159,13 @@ void loadBoard()
   {
     imageMode(CORNER);
     image(ANSWER[i].itemImg, posX - 20, posY + 100*i);
-        if(onTheBoard[i]) //<>//
+    if (onTheBoard[i])
     {
       fill(255);
-      text(ANSWER[i].itemText, posX - 10, posY + 50 + 100*i, 300, 140); //<>//
+      textAlign(LEFT);
+      text(ANSWER[i].itemText, posX - 10, posY + 50 + 100*i, 300, 140);
+      textAlign(CENTER);
+      text(ANSWER[i].itemScore, posX + 290, posY + 80 + 100*i);
     }
   }
   //variable to get correct position (next to left half)
@@ -178,11 +174,14 @@ void loadBoard()
   for (int i = 4; i < 8; i++)
   {
     imageMode(CORNER);
+      textAlign(LEFT);
     image(ANSWER[i].itemImg, posX*2 + 20, posY + 100*j);
-    if(onTheBoard[i])
+    if (onTheBoard[i])
     {
       fill(255);
-      text(ANSWER[i].itemText, posX*2 + 30, posY + 50 + 100*j,300, 140);
+      text(ANSWER[i].itemText, posX*2 + 30, posY + 50 + 100*j, 300, 140);
+      textAlign(CENTER);
+      text(ANSWER[i].itemScore, posX*2 +320, posY + 80 + 100*j);
     }
     j++;
   }
